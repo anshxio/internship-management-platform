@@ -1,6 +1,7 @@
 import HeroSection from "../components/HeroSection";
 import StatsSection from "../components/StatsSection";
 import FeatureSection from "../components/FeatureSection";
+import FeatureInternship from "../components/FeatureInternship";
 function Home(){
     return(
         <div>
@@ -8,6 +9,7 @@ function Home(){
             <HeroSection/>
             <StatsSection />
             <FeatureSection />
+            <FeatureInternship />
         </div>
     );
 }

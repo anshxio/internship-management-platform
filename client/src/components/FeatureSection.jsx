@@ -63,6 +63,7 @@ function FeatureSection() {
                     backgroundColor="bg-indigo-600"
                 />
             </div>
+            <div className="flex items-center justify-center"></div>
         </section>
     );
 }
