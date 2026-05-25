@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import heroImage from "../assets/hero-image.png";
 function HeroSection() {
     return (
         <section className="w-full px-10 py-20">
@@ -32,9 +33,7 @@ function HeroSection() {
                 </div>
                 {/* Right side of the hero section */}
                 <div className="w-[600px] h-[420px] bg-blue-100 rounded-[40px] flex items-center justify-center">
-                    <h2 className="text-2xl font-bold text-blue-700">
-                         Hero Image here
-                    </h2>
+                    <img src={heroImage} alt="Hero" className="w-full h-full object-cover rounded-[40px]" />
                 </div>
             </div>
         </section>

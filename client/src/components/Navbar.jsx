@@ -18,7 +18,7 @@ function Navbar() {
                     <div className="flex items-center gap-8 text-gray-600 text-base">
                         <Link to = "/">Home</Link>
                         <Link to = "/internships">Internships</Link>
-                        <Link to = "/about">About</Link>
+                        <Link to = "/dashboard">Dashboard</Link>
                         <Link to = "/contact">Contact</Link>
                     </div>
                 </div>
