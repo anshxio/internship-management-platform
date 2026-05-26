@@ -2,6 +2,7 @@ import HeroSection from "../components/HeroSection";
 import StatsSection from "../components/StatsSection";
 import FeatureSection from "../components/FeatureSection";
 import FeatureInternship from "../components/FeatureInternship";
+import Footer from "../components/Footer";
 function Home(){
     return(
         <div>
@@ -10,6 +11,8 @@ function Home(){
             <StatsSection />
             <FeatureSection />
             <FeatureInternship />
+            <Footer />
+            
         </div>
     );
 }
