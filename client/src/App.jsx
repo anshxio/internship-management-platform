@@ -11,7 +11,6 @@ import RecruiterDashboard from "./pages/RecruiterDashboard";
 function App() {
   return (
     <div>
-      <Navbar />
       <Routes>
         <Route path = "/" element={<Home />} />
         <Route path = "/login" element={<Login />} />
