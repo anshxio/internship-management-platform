@@ -1,4 +1,32 @@
+import { useState } from "react";
+import axios from "axios";
+
 function Register() {
+  // STATES
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("student");
+
+  // REGISTER FUNCTION
+  const handleRegister = async () => {
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/register", {
+        name,
+        email,
+        password,
+        role,
+      });
+
+      console.log(res.data);
+
+      alert("Registration successful!");
+    } catch (err) {
+      console.error(err);
+      alert("Registration failed");
+    }
+  };
+
   return (
     <section className="h-screen grid grid-cols-[42%_58%] overflow-hidden">
       {/* LEFT PANEL */}
@@ -98,17 +126,26 @@ function Register() {
             </div>
 
             {/* GOOGLE BUTTON */}
-            <button className="w-full border border-gray-200 rounded-2xl py-4 text-lg font-medium mt-8 hover:bg-gray-50 hover:shadow-lg transition-all duration-300">
+            <button
+              type="button"
+              className="w-full border border-gray-200 rounded-2xl py-4 text-lg font-medium mt-8 hover:bg-gray-50 hover:shadow-lg transition-all duration-300"
+            >
               Continue with Google
             </button>
 
             {/* SOCIAL BUTTONS */}
             <div className="grid grid-cols-2 gap-4 mt-4">
-              <button className="border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300">
+              <button
+                type="button"
+                className="border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300"
+              >
                 GitHub
               </button>
 
-              <button className="border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300">
+              <button
+                type="button"
+                className="border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300"
+              >
                 LinkedIn
               </button>
             </div>
@@ -130,7 +167,13 @@ function Register() {
 
               <div className="grid grid-cols-2 gap-4">
                 {/* STUDENT */}
-                <button className="border-2 border-blue-600 rounded-3xl p-6 hover:shadow-xl transition-all duration-300">
+                <button
+                  type="button"
+                  onClick={() => setRole("student")}
+                  className={`rounded-3xl p-6 border transition-all duration-300 hover:shadow-xl ${
+                    role === "student" ? "border-blue-600" : "border-gray-200"
+                  }`}
+                >
                   <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-2xl mx-auto">
                     🎓
                   </div>
@@ -143,7 +186,13 @@ function Register() {
                 </button>
 
                 {/* RECRUITER */}
-                <button className="border border-gray-200 rounded-3xl p-6 hover:border-blue-600 hover:shadow-xl transition-all duration-300">
+                <button
+                  type="button"
+                  onClick={() => setRole("recruiter")}
+                  className={`rounded-3xl p-6 border-2 transition-all duration-300 hover:shadow-xl ${
+                    role === "recruiter" ? "border-blue-600" : "border-gray-200"
+                  }`}
+                >
                   <div className="w-14 h-14 rounded-2xl bg-gray-100 flex items-center justify-center text-2xl mx-auto">
                     💼
                   </div>
@@ -166,6 +215,8 @@ function Register() {
               <input
                 type="text"
                 placeholder="Enter your Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
               />
             </div>
@@ -179,6 +230,8 @@ function Register() {
               <input
                 type="email"
                 placeholder="you@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
               />
             </div>
@@ -192,6 +245,8 @@ function Register() {
               <input
                 type="password"
                 placeholder="Create a strong Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
               />
 
@@ -217,7 +272,11 @@ function Register() {
             </div>
 
             {/* CREATE ACCOUNT BUTTON */}
-            <button className="w-full bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium mt-8 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 hover:scale-[1.01]">
+            <button
+              type="button"
+              onClick={handleRegister}
+              className="w-full bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium mt-8 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 hover:scale-[1.01]"
+            >
               Create your account
             </button>
 

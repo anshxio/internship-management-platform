@@ -1,9 +1,12 @@
+
 const express = require('express');
+const cors = require('cors');
 const pool = require("./db/db");
 const authRoutes = require("./routes/authRoutes");
 const internshipRoutes = require("./routes/internshipRouter");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/internships", internshipRoutes);
