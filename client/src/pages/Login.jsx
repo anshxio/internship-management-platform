@@ -1,4 +1,35 @@
+import {useState} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    try{
+      const res = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+      });
+      console.log(res.data);
+      // Save token to localStorage
+      localStorage.setItem("token", res.data.token);
+      // Save role to localStorage
+      localStorage.setItem("role", res.data.user.role);
+      alert("Login successful!");
+      if(res.data.user.role === "student"){
+        navigate("/dashboard");
+      }else{
+        navigate("/recruiter-dashboard");
+      }
+    } catch(err){
+      console.error(err);
+      alert("Login failed");
+    }
+  };
   return (
     <section className="min-h-screen grid grid-cols-[45%_55%]">
       {/* LEFT PANEL */}
@@ -99,6 +130,8 @@ function Login() {
             <input
               type="email"
               placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
             />
           </div>
@@ -112,6 +145,8 @@ function Login() {
             <input
               type="password"
               placeholder="Enter your password"
+              value ={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
             />
           </div>
@@ -130,7 +165,8 @@ function Login() {
           </div>
 
           {/* SIGN IN BUTTON */}
-          <button className="w-full bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium mt-8 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 hover:scale-[1.01]">
+          <button className="w-full bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium mt-8 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 hover:scale-[1.01]"
+          onClick ={handleLogin}>
             Sign In
           </button>
         </div>
