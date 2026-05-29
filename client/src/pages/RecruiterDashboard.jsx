@@ -1,5 +1,48 @@
+import axios from "axios";
+import {useState} from "react";
 import DashboardStatCard from "../components/DashboardStatCard";
+
 function RecruiterDashboard() {
+  const [title, setTitle] = useState("");
+  const [location, setLocation] = useState("");
+  const [stipend, setStipend] = useState("");
+  const [company, setCompany] = useState("");
+  const [description, setDescription] = useState("");
+  // handle form submission
+  const handleSubmit = async () => {
+    try{
+
+      const token = localStorage.getItem("token");
+
+      const res = await axios.post("http://localhost:5000/api/internships/create",{
+        title,
+        company,
+        location,
+        stipend,
+        description,
+      },
+      {
+        headers: {
+          token: token,
+        },
+      }
+    );
+      
+      console.log(res.data);
+      alert("Internship posted successfully!");
+      // here we are clearing the form 
+      setTitle("");
+      setCompany("");
+      setLocation("");
+      setStipend("");
+      setDescription("");
+
+    } catch(err){
+      console.error(err);
+      alert("Failed to post internship");
+    }
+  };
+  
   return (
     <section className="px-10 py-16">
       {/*Header */}
@@ -33,8 +76,22 @@ function RecruiterDashboard() {
                   Job Title
                 </label>
                 <input
+                  value={title}
+                  onChange ={(e) => setTitle(e.target.value)}
                   type="text"
                   placeholder="e.g. Software Engineering Intern"
+                  className="w-full mt-3 p-4 border border-gray-200 px-6 py-4 text-lg rounded-2xl  focus:ring-2 focus:ring-blue-600 transition"
+                />
+              </div>
+              <div className="mt-6">
+                <label className="text-lg font-medium text-gray-700">
+                  Company
+                </label>
+                <input
+                  value={company}
+                  onChange ={(e) => setCompany(e.target.value)}
+                  type="text"
+                  placeholder="e.g. Google"
                   className="w-full mt-3 p-4 border border-gray-200 px-6 py-4 text-lg rounded-2xl  focus:ring-2 focus:ring-blue-600 transition"
                 />
               </div>
@@ -45,6 +102,8 @@ function RecruiterDashboard() {
                     Location
                   </label>
                   <input
+                    value={location}
+                    onChange ={(e) => setLocation(e.target.value)}
                     type="text"
                     placeholder="e.g. Remote "
                     className="w-full mt-3 p-4 border border-gray-200 px-6 py-4 text-lg rounded-2xl  focus:ring-2 focus:ring-blue-600 transition"
@@ -55,14 +114,31 @@ function RecruiterDashboard() {
                     Stipend
                   </label>
                   <input
+                    value={stipend}
+                    onChange ={(e) => setStipend(e.target.value)}
                     type="text"
                     placeholder="e.g. ₹20,000/month"
                     className="w-full mt-3 p-4 border border-gray-200 px-6 py-4 text-lg rounded-2xl  focus:ring-2 focus:ring-blue-600 transition"
                   />
                 </div>
               </div>
+              {/* Description */}
+              <div className="mt-6">
+                <label className="text-lg font-medium text-gray-700">
+                  Description
+                </label>
+                <textarea
+                  value={description}
+                  onChange ={(e) => setDescription(e.target.value)}
+                  rows="5"
+                  placeholder="e.g. You will be working on exciting projects and gaining hands-on experience..."
+                  className="w-full mt-3 p-4 border border-gray-200 px-6 py-4 text-lg rounded-2xl resize-none focus:ring-2 focus:ring-blue-600 transition"
+                  rows="4"
+                />
+              </div>
               {/* BUTTON */}
-              <button className="w-full mt-10 bg-blue-600 text-white py-5 rounded-2xl text-xl font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-[1.02]">
+              <button className="w-full mt-10 bg-blue-600 text-white py-5 rounded-2xl text-xl font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-[1.02]"
+               onClick={handleSubmit}>
                 Publish Internship
               </button>
             </div>

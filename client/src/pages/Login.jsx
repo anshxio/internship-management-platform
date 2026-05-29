@@ -19,6 +19,8 @@ function Login() {
       localStorage.setItem("token", res.data.token);
       // Save role to localStorage
       localStorage.setItem("role", res.data.user.role);
+      // save user info to localStorage
+      localStorage.setItem("userId", res.data.user.id);
       alert("Login successful!");
       if(res.data.user.role === "student"){
         navigate("/dashboard");
