@@ -1,4 +1,4 @@
-import SideBar from "../components/Sidebar";
+import SideBar from "../components/SideBar";
 import DashboardStatCard from "../components/DashboardStatCard";
 import RecommendationCard from "../components/RecommendationCard";
 
