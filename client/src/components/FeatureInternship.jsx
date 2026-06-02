@@ -7,7 +7,7 @@ function FeatureInternship() {
   useEffect(()=>{
     const fetchInternships = async () => {
       try{
-        const res = await axios.get("http://localhost:5000/api/internships");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/internships`);
         setInternships(res.data.internships);
       } catch(err){
         console.error(err);
