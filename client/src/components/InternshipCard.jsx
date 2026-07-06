@@ -10,7 +10,7 @@ function InternshipCard({
   skills,
 }) {
   return (
-    <div className="group border border-blue-200 rounded-3xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor pointer ">
+    <div className="group cursor-pointer rounded-3xl border border-blue-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
       {/* Top section */}
       <div className="flex items-start justify-between">
         {/* Icon */}

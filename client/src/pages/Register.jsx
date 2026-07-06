@@ -28,10 +28,10 @@ function Register() {
   };
 
   return (
-    <section className="h-screen grid grid-cols-[42%_58%] overflow-hidden">
+    <section className="min-h-screen grid grid-cols-1 overflow-hidden lg:grid-cols-[42%_58%]">
       {/* LEFT PANEL */}
-      <div className="bg-gradient-to-br from-fuchsia-600 via-blue-600 to-indigo-800">
-        <div className="h-full px-12 py-10 text-white flex flex-col justify-between">
+      <div className="bg-linear-to-br from-fuchsia-600 via-blue-600 to-indigo-800">
+        <div className="flex h-full flex-col justify-between px-4 py-8 text-white sm:px-8 sm:py-10 lg:px-12">
           {/* TOP CONTENT */}
           <div>
             {/* LOGO */}
@@ -44,12 +44,12 @@ function Register() {
             </div>
 
             {/* HERO SECTION */}
-            <div className="mt-20">
-              <h1 className="text-5xl font-bold leading-[1.05] max-w-lg">
+            <div className="mt-12 sm:mt-16 lg:mt-20">
+              <h1 className="max-w-lg text-3xl font-bold leading-[1.05] sm:text-4xl lg:text-5xl">
                 Start your internship journey today
               </h1>
 
-              <p className="text-lg text-blue-100 mt-6 leading-relaxed max-w-md">
+              <p className="mt-6 max-w-md text-base leading-relaxed text-blue-100 sm:text-lg">
                 Join thousands of students and recruiters building amazing
                 careers.
               </p>
@@ -59,7 +59,7 @@ function Register() {
           {/* MIDDLE CARDS */}
           <div className="space-y-5">
             {/* ROLE CARDS */}
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
               {/* STUDENT */}
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6">
                 <div className="w-14 h-14 rounded-2xl bg-blue-400 flex items-center justify-center text-2xl">
@@ -84,7 +84,7 @@ function Register() {
             </div>
 
             {/* STATS */}
-            <div className="flex items-center justify-between px-2">
+            <div className="flex flex-col gap-4 px-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h1 className="text-4xl font-bold">500+</h1>
 
@@ -108,12 +108,12 @@ function Register() {
       </div>
 
       {/* RIGHT PANEL */}
-      <div className="bg-white h-screen overflow-y-auto">
-        <div className="h-full px-16 py-10">
+      <div className="overflow-y-auto bg-white">
+        <div className="h-full px-4 py-8 sm:px-8 sm:py-10 lg:px-16 lg:py-10">
           <div className="w-full max-w-xl mx-auto">
             {/* HEADING */}
             <div>
-              <h1 className="text-5xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
                 Create your account
               </h1>
 
@@ -134,7 +134,7 @@ function Register() {
             </button>
 
             {/* SOCIAL BUTTONS */}
-            <div className="grid grid-cols-2 gap-4 mt-4">
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <button
                 type="button"
                 className="border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300"
@@ -151,12 +151,12 @@ function Register() {
             </div>
 
             {/* DIVIDER */}
-            <div className="flex items-center gap-4 my-8">
-              <div className="flex-1 h-[1px] bg-gray-200"></div>
+            <div className="my-8 flex items-center gap-4">
+              <div className="h-px flex-1 bg-gray-200"></div>
 
-              <p className="text-gray-400 text-sm">Or register with email</p>
+              <p className="text-sm text-gray-400">Or register with email</p>
 
-              <div className="flex-1 h-[1px] bg-gray-200"></div>
+              <div className="h-px flex-1 bg-gray-200"></div>
             </div>
 
             {/* ROLE SELECTOR */}
@@ -165,7 +165,7 @@ function Register() {
                 I am a...
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {/* STUDENT */}
                 <button
                   type="button"

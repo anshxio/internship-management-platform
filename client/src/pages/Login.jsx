@@ -33,10 +33,10 @@ function Login() {
     }
   };
   return (
-    <section className="min-h-screen grid grid-cols-[45%_55%]">
+    <section className="min-h-screen grid grid-cols-1 lg:grid-cols-[45%_55%]">
       {/* LEFT PANEL */}
-      <div className="bg-gradient-to-br from-blue-600 to-indigo-700 min-h-screen">
-        <div className="p-16 text-white flex flex-col justify-center gap-20 h-full">
+      <div className="min-h-[320px] bg-gradient-to-br from-blue-600 to-indigo-700 lg:min-h-screen">
+        <div className="flex h-full flex-col justify-center gap-10 p-8 text-white sm:p-12 lg:gap-20 lg:p-16">
           {/* LOGO */}
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-white text-blue-600 flex items-center justify-center font-bold text-2xl shadow-lg">
@@ -54,14 +54,14 @@ function Login() {
               your career journey
             </h1>
 
-            <p className="text-xl text-blue-100 mt-8 leading-relaxed max-w-lg">
+            <p className="mt-8 max-w-lg text-lg leading-relaxed text-blue-100 sm:text-xl">
               Continue discovering opportunities and connecting with top
               companies.
             </p>
           </div>
 
           {/* STATS */}
-          <div className="flex items-center gap-8">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-8">
             {/* CARD 1 */}
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl px-6 py-5 shadow-xl">
               <h1 className="text-3xl font-bold">15k+</h1>
@@ -87,11 +87,11 @@ function Login() {
       </div>
 
       {/* RIGHT PANEL */}
-      <div className="bg-white flex items-center justify-center px-20">
+      <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-8 lg:px-20 lg:py-0">
         <div className="w-full max-w-xl">
           {/* HEADING */}
           <div>
-            <h1 className="text-5xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
               Sign in to your account
             </h1>
 

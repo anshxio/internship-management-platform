@@ -44,24 +44,24 @@ function RecruiterDashboard() {
   };
   
   return (
-    <section className="px-10 py-16">
+    <section className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
       {/*Header */}
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-gray-900">
+        <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl">
           Recruit smarter, not harder
         </h1>
-        <p className="text-2xl text-gray-600 mt-6 max-w-full mx-auto leading-relaxed">
+        <p className="mx-auto mt-6 max-w-full text-lg leading-relaxed text-gray-600 sm:text-xl lg:text-2xl">
           Post internships, manage applications, and find the perfect candidates
           for your team.
         </p>
       </div>
       {/* Dashboard Content */}
-      <div className="flex gap-8 mt-20">
+      <div className="mt-12 flex flex-col gap-8 lg:mt-20 lg:flex-row lg:gap-8">
         {/* Left Panel */}
         <div className=" flex-1">
           <div className="border border-gray-200 rounded-3xl p-8 shadow-sm">
-            <div className="flex items-center justify-between">
-              <h1 className="text-4xl font-bold text-gray-900">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
                 Post New Internship
               </h1>
 
@@ -96,7 +96,7 @@ function RecruiterDashboard() {
                 />
               </div>
               {/* Location & Stipend */}
-              <div className="grid grid-cols-2 gap-6 mt-8">
+              <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
                   <label className="text-lg font-medium text-gray-700">
                     Location
@@ -145,7 +145,7 @@ function RecruiterDashboard() {
           </div>
         </div>
         {/* Right Panel */}
-        <div className="w-[420px]">
+        <div className="w-full lg:w-105">
           <div className="flex flex-col gap-8">
             <DashboardStatCard
               title="Active Listings"

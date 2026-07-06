@@ -4,30 +4,30 @@ import RecommendationCard from "../components/RecommendationCard";
 
 function Dashboard() {
   return (
-    <section className="px-10 py-16">
+    <section className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-gray-900">
+        <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl">
           Your personal command center
         </h1>
 
-        <p className="text-2xl text-gray-600 mt-6 max-w-4xl mx-auto leading-relaxed">
+        <p className="mx-auto mt-6 max-w-4xl text-lg leading-relaxed text-gray-600 sm:text-xl lg:text-2xl">
           Track your applications, discover opportunities, and manage your
           entire internship journey.
         </p>
       </div>
 
       {/* Dashboard Content */}
-      <div className="flex gap-10 mt-20">
+      <div className="mt-12 flex flex-col gap-8 lg:mt-20 lg:flex-row lg:gap-10">
         {/* Left Panel */}
-        <div className="w-[300px]">
+        <div className="w-full lg:w-75">
           <SideBar />
         </div>
 
         {/* Right Panel */}
         <div className="flex-1">
           {/* Top Stats */}
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3 xl:gap-8">
             <DashboardStatCard
               title="Applications"
               number="24"
@@ -75,7 +75,7 @@ function Dashboard() {
           </div>
 
           {/* Complete Profile Section */}
-          <div className="mt-10 bg-orange-50 border border-orange-200 rounded-3xl p-8 flex items-center justify-between">
+          <div className="mt-10 flex flex-col gap-6 rounded-3xl border border-orange-200 bg-orange-50 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             {/* Left Content */}
             <div className="flex items-center gap-6">
               {/* Icon */}
@@ -85,18 +85,18 @@ function Dashboard() {
 
               {/* Text */}
               <div>
-                <h2 className="text-3xl font-bold text-gray-900">
+                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
                   Complete your profile
                 </h2>
 
-                <p className="text-gray-600 text-xl mt-2">
+                <p className="mt-2 text-base text-gray-600 sm:text-xl">
                   Add 3 more skills to increase your visibility by 40%
                 </p>
               </div>
             </div>
 
             {/* Button */}
-            <button className="bg-orange-500 text-white px-8 py-4 rounded-2xl text-lg font-medium hover:bg-orange-600 transition-all duration-300 hover:scale-105">
+            <button className="rounded-2xl bg-orange-500 px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-orange-600 sm:px-8 sm:py-4 sm:text-lg">
               Update Profile
             </button>
           </div>
