@@ -1,6 +1,7 @@
 import SideBar from "../components/SideBar";
 import DashboardStatCard from "../components/DashboardStatCard";
 import RecommendationCard from "../components/RecommendationCard";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   return (
@@ -90,15 +91,18 @@ function Dashboard() {
                 </h2>
 
                 <p className="mt-2 text-base text-gray-600 sm:text-xl">
-                  Add 3 more skills to increase your visibility by 40%
+                  Discover current openings and find your next opportunity.
                 </p>
               </div>
             </div>
 
             {/* Button */}
-            <button className="rounded-2xl bg-orange-500 px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-orange-600 sm:px-8 sm:py-4 sm:text-lg">
-              Update Profile
-            </button>
+            <Link
+              to="/internships"
+              className="rounded-2xl bg-orange-500 px-6 py-3 text-center text-base font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-orange-600 sm:px-8 sm:py-4 sm:text-lg"
+            >
+              Browse Internships
+            </Link>
           </div>
         </div>
       </div>

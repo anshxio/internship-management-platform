@@ -1,9 +1,10 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "../assets/hero-image.png";
 
 function HeroSection() {
   return (
-    <section className="w-full px-4 py-16 sm:px-8 sm:py-20 lg:px-10">
+    <section id="home" className="w-full px-4 py-16 sm:px-8 sm:py-20 lg:px-10">
       <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
         <div className="w-full lg:max-w-2xl">
           <p className="mb-4 font-semibold text-blue-600">#1 Internship Platform</p>
@@ -17,15 +18,15 @@ function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
-            <button className="group rounded-2xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 sm:px-7 sm:py-3">
+            <Link to="/internships" className="group rounded-2xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 sm:px-7 sm:py-3">
               <div className="flex items-center gap-2 transition duration-300 group-hover:scale-110">
                 Explore Internships
                 <ArrowRight size={18} />
               </div>
-            </button>
-            <button className="rounded-2xl border border-gray-300 px-6 py-3 font-medium sm:px-7 sm:py-3">
+            </Link>
+            <a href="#features" className="rounded-2xl border border-gray-300 px-6 py-3 font-medium sm:px-7 sm:py-3">
               Learn More
-            </button>
+            </a>
           </div>
         </div>
 

@@ -10,9 +10,9 @@ function Navbar() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 font-bold text-white">
                 I
               </div>
-              <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">
+              <Link to="/" className="text-xl font-bold text-gray-900 sm:text-2xl">
                 InternFlow
-              </h1>
+              </Link>
             </div>
           </div>
 
@@ -20,7 +20,7 @@ function Navbar() {
             <Link to="/">Home</Link>
             <Link to="/internships">Internships</Link>
             <Link to="/dashboard">Dashboard</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/#contact">Contact</Link>
           </div>
 
           <div className="flex items-center gap-3 sm:gap-6">

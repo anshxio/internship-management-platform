@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import InternshipCard from "./InternshipCard";
+import { Link } from "react-router-dom";
 
 function FeatureInternship() {
   const [internships, setInternships] = useState([]);
@@ -39,15 +40,15 @@ function FeatureInternship() {
             location={internship.location}
             stipend={internship.stipend}
             posted={new Date(internship.created_at).toLocaleDateString()}
-            skills={internship.skills}
+            skills={Array.isArray(internship.skills) ? internship.skills : []}
           />
         ))}
       </div>
 
       <div className="mt-12 flex justify-center sm:mt-16">
-        <button className="rounded-2xl border-2 border-gray-300 bg-[#08122F] px-8 py-3 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#0B173A] sm:px-10 sm:py-4 sm:text-xl">
+        <Link to="/internships" className="rounded-2xl border-2 border-gray-300 bg-[#08122F] px-8 py-3 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#0B173A] sm:px-10 sm:py-4 sm:text-xl">
           View All Internships
-        </button>
+        </Link>
       </div>
     </section>
   );

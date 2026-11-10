@@ -69,12 +69,12 @@ function RecruiterDashboard() {
                 Post New Internship
               </h1>
 
-              <button className="w-14 h-14 rounded-2xl bg-blue-600 text-white text-4xl flex items-center justify-center hover:bg-blue-700 transition">
+              <a href="#post-internship-form" aria-label="Go to internship form" className="w-14 h-14 rounded-2xl bg-blue-600 text-white text-4xl flex items-center justify-center hover:bg-blue-700 transition">
                 +
-              </button>
+              </a>
             </div>
             {/* Form */}
-            <form className="mt-10" onSubmit={handleSubmit}>
+            <form id="post-internship-form" className="mt-10" onSubmit={handleSubmit}>
               <div>
                 <label className="text-lg font-medium text-gray-700">
                   Job Title

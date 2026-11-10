@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function RecommendationCard({ title, company }) {
   return (
     <div className="flex items-center justify-between bg-gray-50 rounded-3xl p-6 hover:shadow-lg transition duration-300">
@@ -17,9 +19,12 @@ function RecommendationCard({ title, company }) {
       </div>
 
       {/* BUTTON */}
-      <button className="bg-blue-600 text-white px-8 py-3 rounded-2xl font-medium hover:bg-blue-700 transition">
-        Apply
-      </button>
+      <Link
+        to="/internships"
+        className="rounded-2xl bg-blue-600 px-8 py-3 text-center font-medium text-white transition hover:bg-blue-700"
+      >
+        Browse
+      </Link>
     </div>
   );
 }

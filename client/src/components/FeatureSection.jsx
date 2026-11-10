@@ -11,7 +11,7 @@ import {
 
 function FeatureSection() {
   return (
-    <section className="px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+    <section id="features" className="px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
       <div className="text-center">
         <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl">
           Everything you need to succeed

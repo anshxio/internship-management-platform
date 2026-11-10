@@ -1,4 +1,5 @@
 import { MapPin, Clock3, Bookmark } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function InternshipCard({
   icon,
@@ -9,6 +10,12 @@ function InternshipCard({
   posted,
   skills = [],
 }) {
+  const isLoggedIn = Boolean(localStorage.getItem("token"));
+  const dashboardPath =
+    localStorage.getItem("role") === "recruiter"
+      ? "/recruiter-dashboard"
+      : "/dashboard";
+
   return (
     <div className="group cursor-pointer rounded-3xl border border-blue-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
       {/* Top section */}
@@ -54,9 +61,12 @@ function InternshipCard({
           </span>
         ))}
       </div>}
-      <button className="w-full mt-8 bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium hover:bg-blue-700 transition">
-        Apply Now
-      </button>
+      <Link
+        to={isLoggedIn ? dashboardPath : "/login"}
+        className="mt-8 block w-full rounded-2xl bg-blue-600 py-4 text-center text-xl font-medium text-white transition hover:bg-blue-700"
+      >
+        {isLoggedIn ? "Open Dashboard" : "Sign in to continue"}
+      </Link>
     </div>
   );
 }

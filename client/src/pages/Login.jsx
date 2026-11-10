@@ -1,6 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Login() {
@@ -8,13 +8,13 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (event) => {
+    event.preventDefault();
     try{
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, {
         email,
         password,
       });
-      console.log(res.data);
       // Save token to localStorage
       localStorage.setItem("token", res.data.token);
       // Save role to localStorage
@@ -97,34 +97,14 @@ function Login() {
 
             <p className="text-gray-500 text-lg mt-4">
               Don&apos;t have an account?
-              <span className="text-blue-600 font-semibold ml-2 cursor-pointer hover:text-blue-700 transition">
+              <Link to="/register" className="text-blue-600 font-semibold ml-2 hover:text-blue-700 transition">
                 Sign up
-              </span>
+              </Link>
             </p>
           </div>
 
-          {/* SOCIAL BUTTONS */}
-          <div className="flex gap-4 mt-8">
-            <button className="flex-1 border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300">
-              Google
-            </button>
-
-            <button className="flex-1 border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300">
-              LinkedIn
-            </button>
-          </div>
-
-          {/* DIVIDER */}
-          <div className="flex items-center gap-4 my-8">
-            <div className="flex-1 h-[1px] bg-gray-200"></div>
-
-            <p className="text-gray-400 text-sm">or continue with email</p>
-
-            <div className="flex-1 h-[1px] bg-gray-200"></div>
-          </div>
-
-          {/* EMAIL */}
-          <div>
+          <form onSubmit={handleLogin}>
+          <div className="mt-8">
             <label className="text-lg font-medium text-gray-700">
               Email Address
             </label>
@@ -132,6 +112,7 @@ function Login() {
             <input
               type="email"
               placeholder="Enter your email"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
@@ -147,30 +128,18 @@ function Login() {
             <input
               type="password"
               placeholder="Enter your password"
+              required
               value ={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
             />
           </div>
 
-          {/* REMEMBER */}
-          <div className="flex items-center justify-between mt-6">
-            <div className="flex items-center gap-3">
-              <input type="checkbox" className="w-5 h-5" />
-
-              <p className="text-gray-600">Remember me</p>
-            </div>
-
-            <button className="text-blue-600 font-medium hover:text-blue-700 transition">
-              Forgot Password?
-            </button>
-          </div>
-
           {/* SIGN IN BUTTON */}
-          <button className="w-full bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium mt-8 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 hover:scale-[1.01]"
-          onClick ={handleLogin}>
+          <button type="submit" className="w-full bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium mt-8 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 hover:scale-[1.01]">
             Sign In
           </button>
+          </form>
         </div>
       </div>
     </section>

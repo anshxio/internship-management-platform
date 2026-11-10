@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   // STATES
@@ -7,9 +8,11 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
+  const navigate = useNavigate();
 
   // REGISTER FUNCTION
-  const handleRegister = async () => {
+  const handleRegister = async (event) => {
+    event.preventDefault();
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
         name,
@@ -20,7 +23,7 @@ function Register() {
 
       console.log(res.data);
 
-      alert("Registration successful!");
+      navigate("/login");
     } catch (err) {
       console.error(err);
       alert("Registration failed");
@@ -119,46 +122,13 @@ function Register() {
 
               <p className="text-gray-500 text-lg mt-4">
                 Already have an account?
-                <span className="text-blue-600 font-semibold ml-2 cursor-pointer hover:text-blue-700 transition">
+                <Link to="/login" className="text-blue-600 font-semibold ml-2 hover:text-blue-700 transition">
                   Sign in
-                </span>
+                </Link>
               </p>
             </div>
 
-            {/* GOOGLE BUTTON */}
-            <button
-              type="button"
-              className="w-full border border-gray-200 rounded-2xl py-4 text-lg font-medium mt-8 hover:bg-gray-50 hover:shadow-lg transition-all duration-300"
-            >
-              Continue with Google
-            </button>
-
-            {/* SOCIAL BUTTONS */}
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <button
-                type="button"
-                className="border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300"
-              >
-                GitHub
-              </button>
-
-              <button
-                type="button"
-                className="border border-gray-200 rounded-2xl py-4 text-lg font-medium hover:bg-gray-50 hover:shadow-lg transition-all duration-300"
-              >
-                LinkedIn
-              </button>
-            </div>
-
-            {/* DIVIDER */}
-            <div className="my-8 flex items-center gap-4">
-              <div className="h-px flex-1 bg-gray-200"></div>
-
-              <p className="text-sm text-gray-400">Or register with email</p>
-
-              <div className="h-px flex-1 bg-gray-200"></div>
-            </div>
-
+            <form onSubmit={handleRegister}>
             {/* ROLE SELECTOR */}
             <div>
               <p className="text-lg font-medium text-gray-700 mb-4">
@@ -215,6 +185,7 @@ function Register() {
               <input
                 type="text"
                 placeholder="Enter your Full Name"
+                required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
@@ -230,6 +201,7 @@ function Register() {
               <input
                 type="email"
                 placeholder="you@gmail.com"
+                required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
@@ -245,6 +217,8 @@ function Register() {
               <input
                 type="password"
                 placeholder="Create a strong Password"
+                minLength={8}
+                required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full mt-3 border border-gray-200 rounded-2xl px-6 py-4 text-lg outline-none focus:ring-2 focus:ring-blue-500 hover:shadow-lg transition-all duration-300"
@@ -255,30 +229,14 @@ function Register() {
               </p>
             </div>
 
-            {/* TERMS */}
-            <div className="flex items-start gap-3 mt-6">
-              <input type="checkbox" className="w-5 h-5 mt-1" />
-
-              <p className="text-gray-500 leading-relaxed">
-                I agree to the
-                <span className="text-blue-600 ml-1 cursor-pointer">
-                  Terms of Service
-                </span>
-                and
-                <span className="text-blue-600 ml-1 cursor-pointer">
-                  Privacy Policy
-                </span>
-              </p>
-            </div>
-
             {/* CREATE ACCOUNT BUTTON */}
             <button
-              type="button"
-              onClick={handleRegister}
+              type="submit"
               className="w-full bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium mt-8 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 hover:scale-[1.01]"
             >
               Create your account
             </button>
+            </form>
 
             {/* BOTTOM TEXT */}
             <p className="text-center text-gray-400 mt-8 pb-10">
