@@ -39,7 +39,7 @@ function FeatureInternship() {
             location={internship.location}
             stipend={internship.stipend}
             posted={new Date(internship.created_at).toLocaleDateString()}
-            skills={["React", "TypeScript", "Tailwind"]}
+            skills={internship.skills}
           />
         ))}
       </div>

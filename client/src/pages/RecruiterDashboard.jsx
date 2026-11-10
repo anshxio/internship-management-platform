@@ -8,8 +8,10 @@ function RecruiterDashboard() {
   const [stipend, setStipend] = useState("");
   const [company, setCompany] = useState("");
   const [description, setDescription] = useState("");
+  const [skills, setSkills] = useState("");
   // handle form submission
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try{
 
       const token = localStorage.getItem("token");
@@ -20,6 +22,7 @@ function RecruiterDashboard() {
         location,
         stipend,
         description,
+        skills: skills.split(",").map((skill) => skill.trim()).filter(Boolean),
       },
       {
         headers: {
@@ -36,6 +39,7 @@ function RecruiterDashboard() {
       setLocation("");
       setStipend("");
       setDescription("");
+      setSkills("");
 
     } catch(err){
       console.error(err);
@@ -70,7 +74,7 @@ function RecruiterDashboard() {
               </button>
             </div>
             {/* Form */}
-            <div className="mt-10">
+            <form className="mt-10" onSubmit={handleSubmit}>
               <div>
                 <label className="text-lg font-medium text-gray-700">
                   Job Title
@@ -136,12 +140,27 @@ function RecruiterDashboard() {
                   rows="4"
                 />
               </div>
+              <div className="mt-6">
+                <label htmlFor="internship-skills" className="text-lg font-medium text-gray-700">
+                  Required Skills
+                </label>
+                <input
+                  id="internship-skills"
+                  value={skills}
+                  onChange={(e) => setSkills(e.target.value)}
+                  type="text"
+                  placeholder="e.g. React, TypeScript, Tailwind"
+                  className="w-full mt-3 p-4 border border-gray-200 px-6 py-4 text-lg rounded-2xl focus:ring-2 focus:ring-blue-600 transition"
+                />
+                <p className="mt-2 text-sm text-gray-500">
+                  Separate skills with commas. This field is optional.
+                </p>
+              </div>
               {/* BUTTON */}
-              <button className="w-full mt-10 bg-blue-600 text-white py-5 rounded-2xl text-xl font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-[1.02]"
-               onClick={handleSubmit}>
+              <button type="submit" className="w-full mt-10 bg-blue-600 text-white py-5 rounded-2xl text-xl font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-[1.02]">
                 Publish Internship
               </button>
-            </div>
+            </form>
           </div>
         </div>
         {/* Right Panel */}

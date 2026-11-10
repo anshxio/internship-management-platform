@@ -21,6 +21,19 @@ app.get("/", async (req, res) =>{
     }
 })
 
-app.listen(5000, () =>{
-    console.log("Server is running on port 5000");
-});
+const startServer = async () => {
+    try {
+        await pool.query(
+            "ALTER TABLE internships ADD COLUMN IF NOT EXISTS skills TEXT[] NOT NULL DEFAULT '{}'"
+        );
+        app.listen(5000, () =>{
+            console.log("Server is running on port 5000");
+        });
+    } catch (err) {
+        console.error("Failed to prepare the internships table:", err);
+        await pool.end();
+        process.exitCode = 1;
+    }
+};
+
+startServer();

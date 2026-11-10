@@ -1,4 +1,4 @@
-import { MapPin, DollarSign, Clock3, Bookmark } from "lucide-react";
+import { MapPin, Clock3, Bookmark } from "lucide-react";
 
 function InternshipCard({
   icon,
@@ -7,7 +7,7 @@ function InternshipCard({
   location,
   stipend,
   posted,
-  skills,
+  skills = [],
 }) {
   return (
     <div className="group cursor-pointer rounded-3xl border border-blue-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
@@ -44,16 +44,16 @@ function InternshipCard({
         </div>
       </div>
       {/*skills */}
-      <div className="flex flex-wrap gap-3 mt-8">
-        {skills.map((skills, index) => (
+      {skills.length > 0 && <div className="flex flex-wrap gap-3 mt-8">
+        {skills.map((skill, index) => (
           <span
-            key={index}
+            key={`${skill}-${index}`}
             className="bg-gray-100 px-4 py-2 rounded-full text-gray-700"
           >
-            {skills}
+            {skill}
           </span>
         ))}
-      </div>
+      </div>}
       <button className="w-full mt-8 bg-blue-600 text-white py-4 rounded-2xl text-xl font-medium hover:bg-blue-700 transition">
         Apply Now
       </button>
