@@ -14,7 +14,7 @@ function HeroSection() {
             Your Skills.
           </h1>
           <p className="mt-6 max-w-xl text-base text-gray-600 sm:text-lg">
-            Connect with top companies, track your applications, and land your dream internship—all in one modern platform designed for ambitious students.
+            Connect with top companies, track your applications, and land your dream internship all in one modern platform designed for ambitious students.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
